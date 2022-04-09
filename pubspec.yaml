@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   provider: ^6.0.2
   shared_preferences: ^2.0.13
+  introduction_screen: ^3.0.2
 
 dev_dependencies:
   flutter_test:
@@ -60,7 +61,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets: //에셋 이미지 경로 및 파일명 추가
+  assets: 
       - assets/images/logo.png
       - assets/images/blind.png
       - assets/images/burn.png

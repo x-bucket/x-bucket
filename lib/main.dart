@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:x_bucket/config/colors.dart';
 
 import 'package:x_bucket/pages/first_page.dart';
+import 'package:x_bucket/pages/onboarding_page.dart';
 import 'package:x_bucket/pages/second_page.dart';
 import 'package:x_bucket/pages/third_page.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'x-bucket',
-      home: HomePage(),
+      home: OnboardingPage(),
     );
   }
 }
