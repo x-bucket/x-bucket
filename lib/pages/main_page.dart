@@ -4,76 +4,90 @@ import '../config/colors.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: BucketColor.white,
-        elevation: 1, //작업 완료후 0으로 설정
-        title: Container(
-          child: Image.asset(
-            'assets/images/logo.png',
-            height: 150,
+    return MaterialApp(
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: RandomWords(),
+    );
+  }
+}
+
+class RandomWords extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: BucketColor.white,
+          elevation: 1, //작업 완료후 0으로 설정
+          title: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Image.asset(
+                    'assets/images/logo.png',
+                    width: 80,
+                  ),
+                ),
+                Container(
+                  child: Icon(Icons.person, color: BucketColor.black),
+                ),
+              ],
+            ),
           ),
         ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              print('setting menu'); //추후 팝업 윈도우로 변경설정
-            },
-            icon: Icon(Icons.reorder, color: BucketColor.black),
-          ),
-        ],
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        color: BucketColor.grey1,
-        child: ListView(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: BucketColor.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        body: ListView(
+          children: <Widget>[
+            Card(
               child: ListTile(
-                leading: Icon(
-                  Icons.search,
-                  size: 40,
-                  color: BucketColor.keycolor,
+                title: Text(
+                  '오늘의 질문',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
                 ),
-                title: Container(
-                  padding: EdgeInsets.only(bottom: 4.0),
-                  child: Text(
-                    '투자중인 종목을 검색해 보세요.',
-                    style: TextStyle(
-                      color: BucketColor.keycolor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
+              ),
+            ),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: NetworkImage(
+                        'https://admin.itsnicethat.com/images/hIth9gqziTZ1FbHpbxVElntgJnI=/6826/format-webp%7Cwidth-1440/59fb502b7fa44c6ad6002000.jpg',
+                      ),
+                      fit: BoxFit.cover)),
+              child: ListTile(
+                title: Text(
+                  '20년 전',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                    color: Colors.white,
                   ),
                 ),
                 subtitle: Text(
-                  '종목명 또는 티커로 검색',
+                  '"20년 전 이맘때 무엇을 하셨나요?"',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: BucketColor.grey3,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 20,
+                    color: Colors.white,
                   ),
-                ),
-                trailing: IconButton(
-                  onPressed: () {
-                    print('searching button');
-                  },
-                  icon: Icon(Icons.arrow_forward_ios, size: 20),
                 ),
               ),
             ),
-            SizedBox(
-              height: 16,
-            ),
+            SizedBox(height: 10),
+            //그리드뷰 앨범
             Container(
               decoration: BoxDecoration(
                 color: BucketColor.white,
@@ -82,130 +96,53 @@ class MainPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(bottom: 4.0),
+                  TabBar(
+                    indicatorColor: BucketColor.keycolor,
+                    indicatorWeight: 3.0,
+                    unselectedLabelStyle: TextStyle(
+                      color: Colors.white,
+                    ),
+                    tabs: [
+                      Tab(
                         child: Text(
-                          '오늘의 투자명언',
+                          '전체보기',
                           style: TextStyle(
-                            color: BucketColor.bluegrey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
                           ),
                         ),
                       ),
-                      Spacer(),
-                    ],
-                  ),
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/lynch.png'),
-                      radius: 30,
-                      backgroundColor: BucketColor.white,
-                    ),
-                    title: Container(
-                      padding: EdgeInsets.only(bottom: 4.0),
-                      child: Text(
-                        '주식시장은 확신을 요구하며, \n확신이 없는 사람들은 반드시 희생된다.',
-                        style: TextStyle(
-                          color: BucketColor.keycolor,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    subtitle: Text(
-                      '피터 린치 Peter Lynch 1944.1.14 ~ ',
-                      style: TextStyle(
-                        color: BucketColor.grey3,
-                        fontSize: 10,
-                        fontWeight: FontWeight.w200,
-                      ),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {
-                        print('wise saying button');
-                      },
-                      icon: Icon(Icons.bookmark_border, size: 30),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: BucketColor.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(bottom: 4.0),
+                      Tab(
                         child: Text(
-                          '나의 투자MBTI',
+                          '오늘의 질문',
                           style: TextStyle(
-                            color: BucketColor.bluegrey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            color: Colors.black,
                           ),
                         ),
-                      ),
-                      Spacer(),
+                      )
                     ],
                   ),
-                  Container(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/jurine.png',
-                            width: 200,
-                            height: 200,
-                            fit: BoxFit.fill,
-                          )
-                        ],
-                      ),
-                    ),
+                  SizedBox(
+                    height: 15,
                   ),
-                  ListTile(
-                    leading: Icon(
-                      Icons.insights,
-                      size: 40,
-                      color: BucketColor.keycolor,
+                  GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
                     ),
-                    title: Container(
-                      padding: EdgeInsets.only(bottom: 4.0),
-                      child: Text(
-                        '투자유형 분석하기',
-                        style: TextStyle(
-                          color: BucketColor.keycolor,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return Container(
+                        width: 80,
+                        height: 500,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                      ),
-                    ),
-                    subtitle: Text(
-                      '영혼의 투자를 시작하세요',
-                      style: TextStyle(
-                        color: BucketColor.grey3,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w200,
-                      ),
-                    ),
-                    trailing: IconButton(
-                      onPressed: () {
-                        print('analytics button');
-                      },
-                      icon: Icon(Icons.arrow_forward_ios, size: 20),
-                    ),
+                      );
+                    },
                   ),
                 ],
               ),

@@ -65,7 +65,11 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
           BottomNavigationBarItem(icon: Icon(Icons.analytics), label: '나의 기록'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.receipt_rounded), label: '기록하기'),
+              icon: Icon(
+                Icons.camera,
+                size: 40,
+              ),
+              label: '기록하기'),
           BottomNavigationBarItem(
               icon: Icon(Icons.feed_rounded), label: '팔로워 피드'),
           BottomNavigationBarItem(
