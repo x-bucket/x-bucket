@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:x_bucket/config/colors.dart';
+import 'package:x_bucket/pages/followfeed_page.dart';
 
-import 'package:x_bucket/pages/first_page.dart';
+import 'package:x_bucket/pages/main_page.dart';
 import 'package:x_bucket/pages/onboarding_page.dart';
-import 'package:x_bucket/pages/second_page.dart';
-import 'package:x_bucket/pages/third_page.dart';
+import 'package:x_bucket/pages/myrecord_page.dart';
+import 'package:x_bucket/pages/my_page.dart';
+import 'package:x_bucket/pages/record_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,9 +41,11 @@ class _HomePageState extends State<HomePage> {
       body: IndexedStack(
         index: currentIndex,
         children: [
-          FirstPage(),
-          SecondPage(),
-          ThirdPage(),
+          MainPage(),
+          MyRecordPage(),
+          RecordPage(),
+          FollowFeedPage(),
+          MyPage(),
 
           // Center(child: Text('4')),
           // Center(child: Text('5')),
@@ -59,8 +63,13 @@ class _HomePageState extends State<HomePage> {
         selectedItemColor: BucketColor.keycolor,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-          BottomNavigationBarItem(icon: Icon(Icons.analytics), label: '버킷리스트'),
-          BottomNavigationBarItem(icon: Icon(Icons.menu_book), label: '회고록'),
+          BottomNavigationBarItem(icon: Icon(Icons.analytics), label: '나의 기록'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.receipt_rounded), label: '기록하기'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.feed_rounded), label: '팔로워 피드'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: '마이페이지'),
           // BottomNavigationBarItem(icon: Icon(Icons.add), label: '홈'),
           // BottomNavigationBarItem(icon: Icon(Icons.add), label: '홈'),
         ],

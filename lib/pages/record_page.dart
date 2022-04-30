@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../config/colors.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({Key? key}) : super(key: key);
+class RecordPage extends StatelessWidget {
+  const RecordPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

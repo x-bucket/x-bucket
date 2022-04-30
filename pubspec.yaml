@@ -68,6 +68,7 @@ flutter:
       - assets/images/jurine.png
       - assets/images/nirvana.png
       - assets/images/lynch.png
+      - assets/images/wang.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

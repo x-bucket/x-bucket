@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:x_bucket/main.dart';
-import 'package:x_bucket/pages/first_page.dart';
+import 'package:x_bucket/pages/main_page.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
