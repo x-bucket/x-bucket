@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:x_bucket/config/colors.dart';
@@ -8,8 +9,11 @@ import 'package:x_bucket/pages/onboarding_page.dart';
 import 'package:x_bucket/pages/myrecord_page.dart';
 import 'package:x_bucket/pages/my_page.dart';
 import 'package:x_bucket/pages/record_page.dart';
+import 'package:x_bucket/pages/signup_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // main 함수에서 async 사용하기 위함
+  await Firebase.initializeApp(); // firebase 앱 시작
   runApp(const MyApp());
 }
 

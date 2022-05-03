@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "244543231885",
+    "project_id": "ormmak-73594",
+    "storage_bucket": "ormmak-73594.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:244543231885:android:1c4dba10ce76e5aa4f4fc4",
+        "android_client_info": {
+          "package_name": "com.example.x_bucket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "244543231885-fl06nndufo6js94o6o11j8552kh5mgk3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUlEqBnZQ8D7xjF1dh4zbPYTpNTMRS9PI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "244543231885-fl06nndufo6js94o6o11j8552kh5mgk3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
