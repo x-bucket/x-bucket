@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:x_bucket/pages/follower_page.dart';
+import 'package:x_bucket/pages/followerfeed_detail_page.dart';
+import 'package:x_bucket/pages/followerfeed_search_page.dart';
 
 import '../config/colors.dart';
 
@@ -9,96 +12,283 @@ class FollowFeedPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: BucketColor.white,
-        elevation: 1, //작업 완료후 0으로 설정
-        title: Container(
-          child: Image.asset(
-            'assets/images/logo.png',
-            height: 150,
+        leading: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+            ),
+            child: Image.asset(
+              'assets/images/mainlogo.png',
+              height: 150,
+            ),
           ),
         ),
-        centerTitle: true,
+        backgroundColor: BucketColor.white,
+        elevation: 1, //작업 완료후 0으로 설정
+
         actions: [
           IconButton(
             onPressed: () {
-              print('setting menu'); //추후 팝업 윈도우로 변경설정
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const FollowerFeedSearchPage(),
+                ),
+              );
             },
-            icon: Icon(Icons.reorder, color: BucketColor.black),
+            icon: Icon(Icons.search, color: BucketColor.black),
           ),
         ],
       ),
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+      body: Container(
+        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        color: BucketColor.grey1,
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: BucketColor.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Column(
                 children: [
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
+                    height: 10,
                   ),
-                  Text(
-                    '나의 투자MBTI를 찾아보고,\n건강한 투자습관을 만들어 보세요.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: BucketColor.keycolor,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        '함께가는 회원 글보기',
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          child: Center(
+                            child: Text(
+                              '관심',
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          width: 50,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          child: Center(
+                            child: Text(
+                              '관심',
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          width: 50,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          child: Center(
+                            child: Text(
+                              '관심',
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                          width: 50,
+                          height: 20,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 15,
+                      childAspectRatio: 150 / 370,
                     ),
-                  ),
-                  SizedBox(height: 38),
-                  Container(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return Column(
                         children: [
-                          Image.asset(
-                            'assets/images/blind.png',
-                            width: 200,
-                            height: 200,
-                            fit: BoxFit.fill,
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 38),
-                  GestureDetector(
-                    onTap: () {
-                      print('+ 분석하기 버튼 클릭 됨');
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 16,
-                        horizontal: 24,
-                      ),
-                      decoration: BoxDecoration(
-                        color: BucketColor.keycolor,
-                        borderRadius: BorderRadius.circular(64),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.search, color: BucketColor.white),
-                          SizedBox(width: 6),
-                          Text(
-                            '분석하기',
-                            style: TextStyle(
-                              color: BucketColor.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FollowerFeedDetailPage(),
+                                  ),
+                                );
+                              },
+                              child: Card(
+                                margin: EdgeInsets.all(0),
+                                child: AspectRatio(
+                                  aspectRatio: 1 / 2,
+                                  child:
+                                      Image.asset('assets/images/jurine.png'),
+                                ),
+                              ),
+                              // child: Container(
+                              //   child: Image.asset('assets/images/jurine.png'),
+                              //   width: MediaQuery.of(context).size.width * 0.6,
+                              //   height:
+                              //       MediaQuery.of(context).size.height * 0.4,
+                              //   decoration: BoxDecoration(
+                              //     color: Colors.grey[300],
+                              //     borderRadius: BorderRadius.circular(10),
+                              //   ),
+                              // ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const FollowerPage(),
+                                    ),
+                                  );
+                                },
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                      AssetImage('assets/images/lynch.png'),
+                                  radius: 15,
+                                  backgroundColor: BucketColor.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const FollowerPage(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  '왕눈이',
+                                  style: TextStyle(
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 30),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.favorite_border,
+                                ),
+                              ),
+                              Text(
+                                '71',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                              right: 10,
+                            ),
+                            child: Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    child: Center(
+                                      child: Text(
+                                        '관심',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ),
+                                    width: 50,
+                                    height: 20,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                                Spacer(),
+                                Text(
+                                  '1 day ago',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
-                      ),
-                    ),
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: 30,
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

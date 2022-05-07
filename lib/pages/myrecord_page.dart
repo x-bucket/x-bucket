@@ -9,93 +9,236 @@ class MyRecordPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: BucketColor.white,
-        elevation: 1, //작업 완료후 0으로 설정
-        title: Container(
-          child: Image.asset(
-            'assets/images/logo.png',
-            height: 150,
+        leading: Container(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 10,
+            ),
+            child: Image.asset(
+              'assets/images/mainlogo.png',
+              height: 150,
+            ),
+          ),
+        ),
+        title: Text(
+          '마이 Feed',
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              print('setting menu'); //추후 팝업 윈도우로 변경설정
-            },
-            icon: Icon(Icons.reorder, color: BucketColor.black),
-          ),
-        ],
+        backgroundColor: BucketColor.white,
+        elevation: 1, //작업 완료후 0으로 설정
       ),
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Stack(
-            alignment: Alignment.center,
+      body: Container(
+        color: BucketColor.grey1,
+        child: DefaultTabController(
+          length: 2,
+          initialIndex: 0,
+          child: Column(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.2,
-                  ),
-                  Text(
-                    '나의 투자MBTI를 찾아보고,\n건강한 투자습관을 만들어 보세요.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: BucketColor.keycolor,
-                    ),
-                  ),
-                  SizedBox(height: 38),
-                  Container(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            'assets/images/blind.png',
-                            width: 200,
-                            height: 200,
-                            fit: BoxFit.fill,
-                          )
-                        ],
+              Container(
+                child: TabBar(
+                  tabs: [
+                    Tab(
+                      child: Text(
+                        '전체보기',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 38),
-                  GestureDetector(
-                    onTap: () {
-                      print('+ 분석하기 버튼 클릭 됨');
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 16,
-                        horizontal: 24,
-                      ),
-                      decoration: BoxDecoration(
-                        color: BucketColor.keycolor,
-                        borderRadius: BorderRadius.circular(64),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.search, color: BucketColor.white),
-                          SizedBox(width: 6),
-                          Text(
-                            '분석하기',
-                            style: TextStyle(
-                              color: BucketColor.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                    Tab(
+                      child: Text(
+                        '오늘의 질문',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 400, //height of TabBarView
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(color: Colors.grey, width: 0.5),
                   ),
-                ],
+                ),
+                child: TabBarView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                        top: 20,
+                      ),
+                      child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 150 / 290,
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 20,
+                        ),
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        itemBuilder: (BuildContext ctx, index) {
+                          return Column(
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    child:
+                                        Image.asset('assets/images/jurine.png'),
+                                    width: 180,
+                                    height: 600,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      child: Center(
+                                        child: Text(
+                                          '관심',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ),
+                                      width: 50,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[300],
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.favorite_border,
+                                    ),
+                                  ),
+                                  Text(
+                                    '71',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    '1 day ago',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                        top: 20,
+                      ),
+                      child: GridView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          childAspectRatio: 150 / 290,
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 20,
+                        ),
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        itemBuilder: (BuildContext ctx, index) {
+                          return Column(
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    child: Image.asset(
+                                        'assets/images/nirvana.png'),
+                                    width: 180,
+                                    height: 600,
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[300],
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      child: Center(
+                                        child: Text(
+                                          '관심',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                      ),
+                                      width: 50,
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[300],
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      Icons.favorite_border,
+                                    ),
+                                  ),
+                                  Text(
+                                    '71',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    '1 day ago',
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

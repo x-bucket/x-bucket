@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:x_bucket/pages/followershow_page.dart';
 import 'package:x_bucket/pages/profile_edit.dart';
-import 'package:x_bucket/pages/settings_page.dart';
 import 'package:x_bucket/pages/sub_mypages/guest_book_page.dart';
-import 'package:x_bucket/pages/sub_mypages/mycategories_page.dart';
 
 import '../config/colors.dart';
-import 'follower_page.dart';
 
-class MyPage extends StatefulWidget {
-  const MyPage({Key? key}) : super(key: key);
+class FollowerPage extends StatefulWidget {
+  const FollowerPage({Key? key}) : super(key: key);
 
   @override
-  State<MyPage> createState() => _MyPageState();
+  State<FollowerPage> createState() => _FollowerPage();
 }
 
-class _MyPageState extends State<MyPage> {
+class _FollowerPage extends State<FollowerPage> {
+  bool isFollower = false;
+  bool isCancelFollower = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,20 +32,13 @@ class _MyPageState extends State<MyPage> {
         ),
         backgroundColor: BucketColor.white,
         elevation: 1, //작업 완료후 0으로 설정
-        title: Text(
-          '마이페이지',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
+
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SettingsPage()),
-              );
+              Navigator.pop(context);
             },
-            icon: Icon(Icons.settings, color: BucketColor.black),
+            icon: Icon(Icons.arrow_back, color: BucketColor.black),
           ),
         ],
       ),
@@ -68,46 +60,15 @@ class _MyPageState extends State<MyPage> {
               child: Column(
                 children: [
                   ListTile(
-                    leading: Stack(
-                      children: [
-                        CircleAvatar(
-                          backgroundImage:
-                              AssetImage('assets/images/lynch.png'),
-                          radius: 30,
-                          backgroundColor: BucketColor.white,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 30,
-                            top: 30,
-                          ),
-                          child: Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey[350],
-                            ),
-                            child: MaterialButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ProfileEdit()),
-                                );
-                              },
-                              elevation: 2.0,
-                              child: Icon(
-                                Icons.edit_outlined,
-                                size: 15.0,
-                                color: Colors.black,
-                              ),
-                              shape: CircleBorder(),
-                            ),
-                          ),
-                        )
-                      ],
+                    leading: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                      ),
+                      child: CircleAvatar(
+                        backgroundImage: AssetImage('assets/images/lynch.png'),
+                        radius: 30,
+                        backgroundColor: BucketColor.white,
+                      ),
                     ),
                     title: Padding(
                       padding: const EdgeInsets.only(
@@ -117,7 +78,7 @@ class _MyPageState extends State<MyPage> {
                         padding: EdgeInsets.only(bottom: 4.0),
                         //_my account name
                         child: Text(
-                          '좋은 마음',
+                          '왕눈이',
                           style: TextStyle(
                             color: BucketColor.keycolor,
                             fontSize: 15,
@@ -127,9 +88,28 @@ class _MyPageState extends State<MyPage> {
                       ),
                     ),
                     subtitle: Text(
-                      "귀농을 준비하는 60년생 쥐띠입니다. 앞으로 잘 부탁드려요!",
+                      "김복남 손주 할아버지!",
                       style:
                           TextStyle(fontSize: 15, fontWeight: FontWeight.w300),
+                    ),
+                    trailing: Column(
+                      children: [
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Expanded(
+                          child: IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.favorite_border,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Expanded(child: Text("팔로우")),
+                      ],
                     ),
                   ),
                   Padding(
@@ -224,11 +204,11 @@ class _MyPageState extends State<MyPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(
-                      right: 280,
+                      right: 240,
                       top: 10,
                     ),
                     child: Text(
-                      '내 관심사',
+                      '왕눈이s 관심사',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -247,7 +227,7 @@ class _MyPageState extends State<MyPage> {
                       childAspectRatio: 2.0 / 0.9,
                     ),
                     shrinkWrap: true,
-                    itemCount: 10,
+                    itemCount: 5,
                     itemBuilder: (BuildContext ctx, index) {
                       return Column(
                         children: [
@@ -264,7 +244,7 @@ class _MyPageState extends State<MyPage> {
                                   ),
                                 ),
                                 width: 60,
-                                height: 15,
+                                height: 10,
                                 decoration: BoxDecoration(
                                   color: Colors.grey[300],
                                   borderRadius: BorderRadius.circular(30),
@@ -275,41 +255,6 @@ class _MyPageState extends State<MyPage> {
                         ],
                       );
                     },
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 295,
-                    ),
-                    child: Container(
-                      child: Center(
-                        child: Center(
-                          child: IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MyCategoriesPage(),
-                                ),
-                              );
-                            },
-                            icon: Icon(
-                              Icons.add,
-                              size: 15,
-                            ),
-                          ),
-                        ),
-                      ),
-                      width: 60,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[300],
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
                   ),
                   SizedBox(
                     height: 20,
@@ -414,6 +359,100 @@ class _MyPageState extends State<MyPage> {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 310,
+                    ),
+                    child: Text(
+                      '피드',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 150 / 290,
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
+                    ),
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return Column(
+                        children: [
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                child: Image.asset('assets/images/jurine.png'),
+                                width: 180,
+                                height: 600,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[300],
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  child: Center(
+                                    child: Text(
+                                      '관심',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                  ),
+                                  width: 50,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey[300],
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {},
+                                icon: Icon(
+                                  Icons.favorite_border,
+                                ),
+                              ),
+                              Text(
+                                '71',
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 4,
+                              ),
+                              Text(
+                                '1 day ago',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),

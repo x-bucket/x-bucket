@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:x_bucket/pages/profile_type_page.dart';
 
 import '../config/colors.dart';
 
@@ -82,7 +81,7 @@ class ProfileEdit extends StatelessWidget {
                 ),
                 TextField(),
                 SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Text(
                   "프로필 소개",
@@ -91,24 +90,6 @@ class ProfileEdit extends StatelessWidget {
                   ),
                 ),
                 TextField(),
-                SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ProfileTypePage()),
-                      );
-                    },
-                    child: Text(
-                      '내 타입 보러가기',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ))
               ],
             ),
           ),
