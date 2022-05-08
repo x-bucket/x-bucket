@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:x_bucket/main.dart';
 import 'package:x_bucket/pages/main_page.dart';
+import 'package:x_bucket/views/screens/auth/login_screen.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -93,7 +94,7 @@ class OnboardingPage extends StatelessWidget {
           // Done 클릭시 페이지 이동
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => HomePage()),
+            MaterialPageRoute(builder: (context) => LoginScreen()),
           );
         },
       ),

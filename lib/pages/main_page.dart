@@ -87,6 +87,7 @@ class RandomWords extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
+
             //그리드뷰 앨범
             Container(
               decoration: BoxDecoration(

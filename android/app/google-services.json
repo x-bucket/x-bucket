@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "10981889022",
+    "project_id": "ormak-8965b",
+    "storage_bucket": "ormak-8965b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10981889022:android:b6778476ab965228a4e6af",
+        "android_client_info": {
+          "package_name": "com.example.x_bucket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "10981889022-dkre3fs2uvk17jl0v7i4fgsikb2m62t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoDTdY6NccH33ahWzZ08dzyv2DRv61XVI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "10981889022-dkre3fs2uvk17jl0v7i4fgsikb2m62t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
