@@ -1,4 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share/share.dart';
 import 'package:x_bucket/pages/follower_page.dart';
 import 'package:x_bucket/pages/followerfeed_search_page.dart';
 import 'package:x_bucket/pages/option_pages/customer_report_page.dart';
@@ -151,13 +155,30 @@ class _FollowerFeedDetailPageState extends State<FollowerFeedDetailPage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Share.share('앱스토어에 오르막을 검색해보세요!');
+            },
             icon: Icon(
               Icons.share,
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              String url =
+                  'https://hs.e-school.or.kr/webzine/vol13/assets/images/sub/sub07/sub07_img01.png';
+              final tempDir = await getTemporaryDirectory();
+              final tempPath = '${tempDir.path}/myfile.jpg';
+
+              await Dio().download;
+
+              await GallerySaver.saveVideo(tempPath, albumName: 'Ormak');
+
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('갤러리에 저장되었습니다!'),
+                ),
+              );
+            },
             icon: Icon(
               Icons.file_download,
             ),

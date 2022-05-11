@@ -44,110 +44,138 @@ class _CustomerInterestPageState extends State<CustomerInterestPage> {
           ),
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.only(
-          top: 5,
-          left: 10,
-          right: 10,
-        ),
-        color: BucketColor.grey1,
-        child: ListView(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: BucketColor.white,
-                borderRadius: BorderRadius.circular(16),
+      body: SingleChildScrollView(
+        child: Container(
+          color: BucketColor.grey1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 15,
               ),
-              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 10,
-                      top: 20,
-                    ),
-                    child: Text(
-                      '해당 컨텐츠와 관련해서 관심없음을 접수하실 부분이 있으신가요?',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 15,
+                ),
+                child: Text(
+                  "관심이 없는 이유를 선택해주세요.",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
                   ),
-                  SizedBox(
-                    height: 5,
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                color: BucketColor.white,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: 15,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 30,
-                    ),
-                    child:
-                        Text('밑에 접수하실 내용을 작성해주시면 오르막 고객지원팀이 5일 이내에 답변을 드립니다.'),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        '접수 제목 :',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                      SizedBox(
+                        height: 10,
+                      ),
+                      ListTile(
+                        leading: Text('마음에 들지 않는 콘텐츠입니다.'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
                         ),
                       ),
-                      SizedBox(
-                        width: 10,
+                      ListTile(
+                        leading: Text('혐오 발언'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
                       ),
-                      Flexible(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: '접수 제목을 입력하세요.',
+                      ListTile(
+                        leading: Text('사기 혹은 거짓'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('성적인 콘텐츠'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('폭력적인 컨텐츠'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('따돌림 또는 괴롭힘'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('스팸'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('불법 또는 규제 상품 판매'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('정치와 관련된 콘텐츠'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('기타'),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.navigate_next,
                           ),
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 300,
-                    ),
-                    child: Text(
-                      '신고 내용',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: '접수하시는 이유를 입력하세요.',
-                      contentPadding: EdgeInsets.only(
-                        bottom: 90,
-                        left: 10,
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      '접수 등록',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
