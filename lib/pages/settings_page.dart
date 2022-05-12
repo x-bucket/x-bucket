@@ -3,6 +3,7 @@ import 'package:x_bucket/pages/follower_page.dart';
 import 'package:x_bucket/pages/option_pages/account_cancellation_page.dart';
 import 'package:x_bucket/pages/option_pages/blocked_accounts_page.dart';
 import 'package:x_bucket/pages/option_pages/customer_center_page.dart';
+import 'package:x_bucket/pages/option_pages/service_regulation_page.dart';
 import 'package:x_bucket/pages/profile_edit.dart';
 
 import '../config/colors.dart';
@@ -127,15 +128,6 @@ class _SettingsPage extends State<SettingsPage> {
                         ),
                       ),
                       ListTile(
-                        leading: Text('알림 설정'),
-                        trailing: IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.navigate_next,
-                          ),
-                        ),
-                      ),
-                      ListTile(
                         leading: Text('차단 멤버 관리'),
                         trailing: IconButton(
                           onPressed: () {
@@ -186,6 +178,23 @@ class _SettingsPage extends State<SettingsPage> {
                               MaterialPageRoute(
                                 builder: (context) =>
                                     const AccountCancellationPage(),
+                              ),
+                            );
+                          },
+                          icon: Icon(
+                            Icons.navigate_next,
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Text('서비스 이용 약관'),
+                        trailing: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ServiceRegulationPage(),
                               ),
                             );
                           },

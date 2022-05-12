@@ -6,17 +6,15 @@ import 'package:x_bucket/pages/settings_page.dart';
 import '../../config/colors.dart';
 import 'customer_interest_final_page.dart';
 
-class AccountCancellationPage extends StatefulWidget {
-  const AccountCancellationPage({Key? key}) : super(key: key);
+class CustomerReportDetailPage extends StatefulWidget {
+  const CustomerReportDetailPage({Key? key}) : super(key: key);
 
   @override
-  State<AccountCancellationPage> createState() =>
-      _AccountCancellationPageState();
+  State<CustomerReportDetailPage> createState() =>
+      _CustomerReportDetailPageState();
 }
 
-class _AccountCancellationPageState extends State<AccountCancellationPage> {
-  bool _value1 = false;
-  bool _value2 = false;
+class _CustomerReportDetailPageState extends State<CustomerReportDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,9 +31,9 @@ class _AccountCancellationPageState extends State<AccountCancellationPage> {
           ),
         ),
         backgroundColor: BucketColor.white,
-        elevation: 1, //작업 완료후 0으로 설정
+        elevation: 1,
         title: Text(
-          '회원 탈퇴하기',
+          '콘텐츠 신고하기',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
@@ -71,7 +69,7 @@ class _AccountCancellationPageState extends State<AccountCancellationPage> {
                       top: 20,
                     ),
                     child: Text(
-                      '오르막 회원 탈퇴를 고려하고 계신가요?',
+                      '해당 컨텐츠와 관련해서 신고하실 부분이 있으신가요?',
                       style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.bold,
@@ -85,52 +83,59 @@ class _AccountCancellationPageState extends State<AccountCancellationPage> {
                     padding: const EdgeInsets.only(
                       right: 30,
                     ),
-                    child: Text('탈퇴 신청 전에 아래 관련 내용을 확인해보시고 체크를 부탁드립니다.'),
+                    child:
+                        Text('밑에 신고하실 내용을 작성해주시면 오르막 고객지원팀이 5일 이내에 답변을 드립니다.'),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
-                  CheckboxListTile(
-                    value: _value1,
-                    onChanged: (value) {
-                      setState(() {
-                        _value1 = value!;
-                      });
-                    },
-                    title: Text(
-                      "1. 탈퇴 시에 오르막 서비스에 업로드된 모든 정보가 삭제됩니다.",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                        fontSize: 14,
+                  Row(
+                    children: [
+                      Text(
+                        '신고 제목 :',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Flexible(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: '신고 제목을 입력하세요.',
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 30,
                   ),
-                  CheckboxListTile(
-                    value: _value2,
-                    onChanged: (value) {
-                      setState(() {
-                        _value2 = value!;
-                      });
-                    },
-                    title: Text(
-                      "2. 오르막의 정보 처리 방침에 따라 일부 정보는 유지될 수 있습니다.",
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 300,
+                    ),
+                    child: Text(
+                      '신고 내용',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                        fontSize: 14,
                       ),
                     ),
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   ),
                   SizedBox(
                     height: 10,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: '신고하시는 이유를 입력하세요.',
+                      contentPadding: EdgeInsets.only(
+                        bottom: 90,
+                        left: 10,
+                      ),
+                    ),
                   ),
                   TextButton(
                     onPressed: () {
@@ -140,7 +145,7 @@ class _AccountCancellationPageState extends State<AccountCancellationPage> {
                           return Expanded(
                             child: AlertDialog(
                               content: Text(
-                                '정말로 탈퇴하시겠습니까?',
+                                '신고를 접수하시겠습니까?',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -148,14 +153,13 @@ class _AccountCancellationPageState extends State<AccountCancellationPage> {
                               actions: [
                                 TextButton(
                                   onPressed: () {
-                                    //로그인 페이지로 이동
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (context) =>
-                                    //         const CustomerInterestFinalPage(),
-                                    //   ),
-                                    // );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CustomerInterestFinalPage(),
+                                      ),
+                                    );
                                   },
                                   child: Text(
                                     '네',
@@ -184,12 +188,12 @@ class _AccountCancellationPageState extends State<AccountCancellationPage> {
                       );
                     },
                     child: Text(
-                      '탈퇴하기',
+                      '신고 등록',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

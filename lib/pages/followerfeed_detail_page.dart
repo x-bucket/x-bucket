@@ -5,6 +5,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share/share.dart';
 import 'package:x_bucket/pages/follower_page.dart';
 import 'package:x_bucket/pages/followerfeed_search_page.dart';
+import 'package:x_bucket/pages/option_pages/customer_interest_final_page.dart';
 import 'package:x_bucket/pages/option_pages/customer_report_page.dart';
 
 import '../config/colors.dart';
@@ -49,12 +50,52 @@ class _FollowerFeedDetailPageState extends State<FollowerFeedDetailPage> {
                         ),
                         GestureDetector(
                           onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const CustomerInterestPage(),
-                              ),
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Expanded(
+                                  child: AlertDialog(
+                                    content: Text(
+                                      '해당 컨텐츠를 관심없는 컨텐츠로 등록하시겠습니까?',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CustomerInterestFinalPage(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          '네',
+                                          style: TextStyle(
+                                            color: Colors.blue,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text(
+                                          '아니요',
+                                          style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             );
                           },
                           child: Container(
