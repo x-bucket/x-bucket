@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:firebase_phone_auth_handler/firebase_phone_auth_handler.dart';
 
 import 'package:x_bucket/config/colors.dart';
 import 'package:x_bucket/pages/followfeed_page.dart';
@@ -9,12 +12,20 @@ import 'package:x_bucket/pages/onboarding_page.dart';
 import 'package:x_bucket/pages/myrecord_page.dart';
 import 'package:x_bucket/pages/my_page.dart';
 import 'package:x_bucket/pages/record_page.dart';
-import 'package:x_bucket/pages/signup_page.dart';
+
+import 'auth_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // main 함수에서 async 사용하기 위함
   await Firebase.initializeApp(); // firebase 앱 시작
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthService()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -22,10 +33,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'x-bucket',
-      home: OnboardingPage(),
+    return FirebasePhoneAuthProvider(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'x-bucket',
+        home: OnboardingPage(),
+      ),
     );
   }
 }

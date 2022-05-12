@@ -1,40 +1,42 @@
 import 'package:flutter/material.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:x_bucket/config/colors.dart';
 import 'package:x_bucket/pages/signup_page.dart';
 // import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-// // SharedPreferences 인스턴스를 어디서든 접근 가능하도록 전역 변수로 선언
-// late SharedPreferences prefs;
+import '../main.dart';
 
-// void main() async {
-//   // main() 함수에서 async를 쓰려면 필요
-//   WidgetsFlutterBinding.ensureInitialized();
+// SharedPreferences 인스턴스를 어디서든 접근 가능하도록 전역 변수로 선언
+late SharedPreferences prefs;
 
-//   // shared_preferences 인스턴스 생성
-//   prefs = await SharedPreferences.getInstance();
+void main() async {
+  // main() 함수에서 async를 쓰려면 필요
+  WidgetsFlutterBinding.ensureInitialized();
 
-//   runApp(MyApp());
-// }
+  // shared_preferences 인스턴스 생성
+  prefs = await SharedPreferences.getInstance();
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
+  runApp(MyApp());
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     // SharedPreferences에서 온보딩 완료 여부 조회
-//     // isOnboarded에 해당하는 값에서 null을 반환하는 경우 false 할당
-//     bool isOnboarded = prefs.getBool("isOnboarded") ?? false;
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         textTheme: GoogleFonts.getTextTheme('Jua'),
-//       ),
-//       home: isOnboarded ? HomePage() : OnboardingPage(),
-//     );
-//   }
-// }
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // SharedPreferences에서 온보딩 완료 여부 조회
+    // isOnboarded에 해당하는 값에서 null을 반환하는 경우 false 할당
+    bool isOnboarded = prefs.getBool("isOnboarded") ?? false;
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          // textTheme: GoogleFonts.getTextTheme('Jua'),
+          ),
+      home: isOnboarded ? HomePage() : OnboardingPage(),
+    );
+  }
+}
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({Key? key}) : super(key: key);
@@ -45,21 +47,42 @@ class OnboardingPage extends StatelessWidget {
       body: SafeArea(
         child: IntroductionScreen(
           pages: [
-            // 첫 번째 페이지
+            ////// 0번째 페이지
             PageViewModel(
-              title: "하고 싶었던 말 다 하는 \n우리끼리 즐기는 커뮤니티, \n오르막에 오신 걸 환영합니다👋",
-              body:
-                  "오르막은 성숙한 사람들이 모여 \n인생 2막, 라이프스타일을 함께 만들어 나가는 \n인생의 오르막길입니다.",
-              image: Padding(
-                padding: EdgeInsets.only(bottom: 60),
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: 200,
+              reverse: true,
+              title: "",
+              body: "",
+              image: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: Image.network(
+                  'https://user-images.githubusercontent.com/101466300/168020338-4f40d118-d097-44dd-86ea-b447db6693fc.png',
                 ),
               ),
               decoration: PageDecoration(
+                fullScreen: true,
+                titleTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                bodyTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            ////// 첫 번째 페이지
+            PageViewModel(
+              title: "",
+              body: "",
+              image: Image.network(
+                'https://user-images.githubusercontent.com/101466300/168013170-c080f05f-6e03-4b31-a872-b59a12175339.png',
+              ),
+              decoration: PageDecoration(
+                  fullScreen: true,
                   titleTextStyle: TextStyle(
-                    color: BucketColor.keycolor,
+                    color: BucketColor.ocolor,
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -69,61 +92,46 @@ class OnboardingPage extends StatelessWidget {
                   ),
                   titlePadding: EdgeInsets.only(bottom: 50)),
             ),
-            // 두 번째 페이지
+            ////// 두 번째 페이지
             PageViewModel(
               reverse: true,
-              title: "\n\n\n이미지와 영상으로 쉽게 \n일상과 추억을 나누고 기록해요",
+              title: "",
               body: "",
-              image: Image.asset('assets/images/blind.png'),
-              decoration: PageDecoration(
-                  titleTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  bodyTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                  imagePadding: EdgeInsets.only(bottom: 50)),
-            ),
-            // 세 번째 페이지
-            PageViewModel(
-              reverse: true,
-              title: "\n\n\n매일 올라오는 질문들에 답하며 \n인생을 돌아보고 나를 발견해요",
-              body: "",
-              image: Image.asset('assets/images/jurine.png'),
-              decoration: PageDecoration(
-                  titleTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  bodyTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                  ),
-                  imagePadding: EdgeInsets.only(bottom: 50)),
-            ),
-            // 네 번째 페이지
-            PageViewModel(
-              reverse: true,
-              title: "\n\n\n수많은 친구들이 당신을 기다리고 있어요 \n새로운 여러분의 모습을 만나보세요",
-              body: "",
-              image: Image.asset(
-                'assets/images/burn.png',
+              image: Image.network(
+                'https://user-images.githubusercontent.com/101466300/168019239-a1454590-6fc1-4da3-9fc7-8d8f57462336.png',
               ),
               decoration: PageDecoration(
-                  titleTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  bodyTextStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),
-                  imagePadding: EdgeInsets.only(bottom: 50)),
+                fullScreen: true,
+                titleTextStyle: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                bodyTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            ////// 세 번째 페이지
+            PageViewModel(
+              reverse: true,
+              title: "",
+              body: "",
+              image: Image.network(
+                  'https://user-images.githubusercontent.com/101466300/168019633-f83e501c-19f5-40bc-aac8-3b0dc3849c27.png'),
+              decoration: PageDecoration(
+                fullScreen: true,
+                titleTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                bodyTextStyle: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                ),
+              ),
             ),
             // 마지막 페이지(로그인 선택 페이지)
             PageViewModel(
@@ -133,7 +141,6 @@ class OnboardingPage extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 60.0),
                 child: Image.asset(
                   'assets/images/logo.png',
-                  color: Colors.white,
                   width: 200,
                 ),
               ),
@@ -146,25 +153,24 @@ class OnboardingPage extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                    elevation: 10,
+                    elevation: 0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
-                      side: BorderSide(color: Colors.white),
                     ),
-                    primary: BucketColor.keycolor),
+                    primary: BucketColor.ocolor),
                 child: const Text(
                   "시작하기",
                 ),
               ),
               decoration: PageDecoration(
-                pageColor: BucketColor.keycolor,
+                pageColor: BucketColor.grey1,
                 titleTextStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
                 bodyTextStyle: TextStyle(
-                  color: Colors.white,
+                  color: Colors.black,
                   fontSize: 18,
                 ),
               ),
@@ -175,37 +181,23 @@ class OnboardingPage extends StatelessWidget {
           showDoneButton: false,
           back: const Icon(
             Icons.arrow_back,
-            color: BucketColor.keycolor,
+            color: BucketColor.ocolor,
           ),
           next: Text(
             "다음",
             style: TextStyle(
-                fontWeight: FontWeight.w600, color: BucketColor.keycolor),
+                fontWeight: FontWeight.w600, color: BucketColor.ocolor),
           ),
-          //done 버튼 있을 경우
-          // done: Text(
-          //   "Done",
-          //   style: TextStyle(
-          //       fontWeight: FontWeight.w600, color: BucketColor.keycolor),
-          // ),
-          // onDone: () {
-          //   // // Done 클릭시 isOnboarded = true로 저장
-          //   // prefs.setBool("isOnboarded", true);
-          //   // Done 클릭시 페이지 이동
-          //   Navigator.pushReplacement(
-          //     context,
-          //     MaterialPageRoute(builder: (context) => HomePage()),
-          //   );
-          // },
           baseBtnStyle: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(25.0),
             ),
           ),
+          globalBackgroundColor: BucketColor.grey1,
           dotsDecorator: DotsDecorator(
               size: const Size.square(10.0),
               activeSize: const Size(20.0, 10.0),
-              activeColor: BucketColor.keycolor,
+              activeColor: BucketColor.ocolor,
               color: Colors.black26,
               spacing: const EdgeInsets.symmetric(horizontal: 3.0),
               activeShape: RoundedRectangleBorder(

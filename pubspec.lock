@@ -85,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  easy_container:
+    dependency: "direct main"
+    description:
+      name: easy_container
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -148,6 +155,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.6.3"
+  firebase_phone_auth_handler:
+    dependency: "direct main"
+    description:
+      name: firebase_phone_auth_handler
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -217,6 +231,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.17.0"
+  intl_phone_field:
+    dependency: "direct main"
+    description:
+      name: intl_phone_field
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   introduction_screen:
     dependency: "direct main"
     description:
@@ -294,6 +315,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  pinput:
+    dependency: "direct main"
+    description:
+      name: pinput
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.7"
   platform:
     dependency: transitive
     description:
@@ -383,6 +411,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_auth:
+    dependency: transitive
+    description:
+      name: smart_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.5"
   source_span:
     dependency: transitive
     description:
