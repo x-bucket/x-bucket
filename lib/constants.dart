@@ -4,12 +4,13 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:x_bucket/controllers/auth_controller.dart';
 import 'package:x_bucket/views/screens/add_video_screen.dart';
+import 'package:x_bucket/views/screens/search_screen.dart';
 import 'package:x_bucket/views/screens/video_screen.dart';
 
-const pages = [
+List pages = [
   VideoScreen(),
-  Text('Answer Screen'),
-  AddVideoScreen(),
+  SearchScreen(),
+  const AddVideoScreen(),
   Text('Follower Screen'),
   Text('Profile Screen')
 ];

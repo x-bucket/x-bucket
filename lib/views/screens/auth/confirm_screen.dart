@@ -40,6 +40,12 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     controller.setLooping(true); //다음 영상으로 넘어가기 -> 질문응답여부 체크 ->분기 만들기
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(

@@ -7,7 +7,11 @@ class Video {
   List likes;
   int commentCount;
   int shareCount;
+  // String interest;
   String songName;
+
+  // String todayQuestion;
+  // String title;
   String caption;
   String videoUrl;
   String thumbnail;
@@ -20,7 +24,10 @@ class Video {
     required this.likes,
     required this.commentCount,
     required this.shareCount,
+    // required this.interest,
     required this.songName,
+    // required this.todayQuestion,
+    // required this.title,
     required this.caption,
     required this.videoUrl,
     required this.profilePhoto,
@@ -35,7 +42,10 @@ class Video {
         "likes": likes,
         "commentCount": commentCount,
         "shareCount": shareCount,
+        // "interest": interest,
         "songName": songName,
+        // "todayQuestion": todayQuestion,
+        // "title": title,
         "caption": caption,
         "videoUrl": videoUrl,
         "thumbnail": thumbnail,
@@ -52,6 +62,9 @@ class Video {
       commentCount: snapshot['commentCount'],
       shareCount: snapshot['shareCount'],
       songName: snapshot['songName'],
+      // interest: snapshot['interest'],
+      // todayQuestion: snapshot['todayQuestion'],
+      // title: snapshot['title'],
       caption: snapshot['caption'],
       videoUrl: snapshot['videoUrl'],
       profilePhoto: snapshot['profilePhoto'],

@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:x_bucket/constants.dart';
-import 'package:x_bucket/views/confirm_screen.dart';
+import 'package:x_bucket/views/screens/auth/confirm_screen.dart';
 
 class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({Key? key}) : super(key: key);
@@ -89,7 +89,7 @@ class AddVideoScreen extends StatelessWidget {
             decoration: BoxDecoration(color: buttonColor),
             child: const Center(
               child: Text(
-                'Add Video',
+                '질문에 답변하기',
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.black,
